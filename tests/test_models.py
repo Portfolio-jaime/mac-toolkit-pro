@@ -1,6 +1,7 @@
 import pytest
 from pathlib import Path
-from mac_toolkit_pro.core.models import CleanableItem, AnalysisResult
+from typing import get_args
+from mac_toolkit_pro.core.models import CleanableItem, AnalysisResult, RiskLevel
 
 
 def test_cleanable_item_fields():
@@ -47,3 +48,27 @@ def test_severity_label():
     assert severity_label(5 * 1024**3) == "high"
     assert severity_label(500 * 1024**2) == "medium"
     assert severity_label(10 * 1024**2) == "low"
+
+
+def test_cleanable_item_risk_default():
+    item = CleanableItem(
+        path=Path("/tmp/x"), size_bytes=100, label="x",
+        domain="test", safe_to_delete=True, reason="test",
+    )
+    assert item.risk == "safe"
+    assert item.age_days is None
+
+
+def test_cleanable_item_risk_values():
+    for level in ("safe", "warn", "danger"):
+        item = CleanableItem(
+            path=Path("/tmp/x"), size_bytes=100, label="x",
+            domain="test", safe_to_delete=True, reason="test",
+            risk=level, age_days=30,
+        )
+        assert item.risk == level
+        assert item.age_days == 30
+
+
+def test_risk_level_literal():
+    assert set(get_args(RiskLevel)) == {"safe", "warn", "danger"}

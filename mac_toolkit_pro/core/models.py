@@ -2,7 +2,9 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
-from typing import List, Optional
+from typing import List, Literal, Optional
+
+RiskLevel = Literal["safe", "warn", "danger"]
 
 
 @dataclass
@@ -13,6 +15,8 @@ class CleanableItem:
     domain: str
     safe_to_delete: bool
     reason: str
+    age_days: Optional[int] = None
+    risk: RiskLevel = "safe"
 
 
 @dataclass
