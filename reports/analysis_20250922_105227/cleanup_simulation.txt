@@ -1,0 +1,552 @@
+🧹 REPORTE DE LIMPIEZA MAC M1
+==================================================
+📅 Fecha: 2025-09-22 10:55:36
+
+📂 Cachés del sistema: 0.0 B
+📋 Archivos de log: 39.0 MB
+📄 Archivos duplicados: 430.0 MB
+🗑️  Papelera: 0.0 B
+🌐 Datos de navegadores: 0.0 B
+
+💾 TOTAL LIBERADO: 469.1 MB
+
+⚠️  ERRORES ENCONTRADOS:
+   Sin permisos para acceder a /Library/Caches
+   Sin permisos para acceder a /Library/Logs
+   Sin permisos para vaciar la papelera
+
+Detalles completos:
+{
+  "caches": {
+    "total_cleaned": 0,
+    "results": [
+      {
+        "path": "/Users/jaime.henao/Library/Caches",
+        "initial_size": 11115530372,
+        "cleaned_size": 0,
+        "files_found": 130
+      },
+      {
+        "path": "/Users/jaime.henao/Library/Application Support/CrashReporter",
+        "initial_size": 128362,
+        "cleaned_size": 0,
+        "files_found": 50
+      },
+      {
+        "path": "/Users/jaime.henao/Library/WebKit",
+        "initial_size": 8566307,
+        "cleaned_size": 0,
+        "files_found": 10
+      },
+      {
+        "path": "/System/Library/Caches",
+        "initial_size": 154104,
+        "cleaned_size": 0,
+        "files_found": 10
+      }
+    ]
+  },
+  "logs": {
+    "total_cleaned": 40936264,
+    "results": [
+      {
+        "path": "/Users/jaime.henao/Library/Logs",
+        "cleaned_size": 36360250,
+        "files_cleaned": 64
+      },
+      {
+        "path": "/var/log",
+        "cleaned_size": 4576014,
+        "files_cleaned": 15
+      }
+    ]
+  },
+  "duplicates": {
+    "total_cleaned": 450925167,
+    "duplicates": [
+      {
+        "path": "/Users/jaime.henao/Downloads/BABolt-Plan to Build Kubectl ECR Image Compatible with Kuma 2.8.1-140425-203113.pdf",
+        "size": 467798,
+        "name": "BABolt-Plan to Build Kubectl ECR Image Compatible with Kuma 2.8.1-140425-203113.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/co.com.winet.ipsa.impresion (2).pdf",
+        "size": 98350,
+        "name": "co.com.winet.ipsa.impresion (2).pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/CV_Jaime_Andres_Henao_A (1).pdf",
+        "size": 158834,
+        "name": "CV_Jaime_Andres_Henao_A (1).pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-03-30 at 20.23.17.jpeg",
+        "size": 141533,
+        "name": "WhatsApp Image 2025-03-30 at 20.23.17.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/Formula1-e6713905-2f59-48f3-9626-0f92491c6475.pdf",
+        "size": 90577,
+        "name": "Formula1-e6713905-2f59-48f3-9626-0f92491c6475.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/Certificacion-2.pdf",
+        "size": 607831,
+        "name": "Certificacion-2.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/rap-beats-music-161432.mp3",
+        "size": 4015751,
+        "name": "rap-beats-music-161432.mp3"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-04-19 at 10.43.43.jpeg",
+        "size": 15044,
+        "name": "WhatsApp Image 2025-04-19 at 10.43.43.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-01-12 at 17.45.28 (1).jpeg",
+        "size": 100667,
+        "name": "WhatsApp Image 2025-01-12 at 17.45.28 (1).jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/entrega-de-assets-en-comodato-espanol-2-7-1.pdf",
+        "size": 1899470,
+        "name": "entrega-de-assets-en-comodato-espanol-2-7-1.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/DevExperie-Redis Cost Optimization Initiative - DEV1 Environment-070925-140712.pdf",
+        "size": 511092,
+        "name": "DevExperie-Redis Cost Optimization Initiative - DEV1 Environment-070925-140712.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/Certificacion-1.pdf",
+        "size": 607832,
+        "name": "Certificacion-1.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/Jaime henao 03-06-2025 .pdf",
+        "size": 1252215,
+        "name": "Jaime henao 03-06-2025 .pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2024-07-17 at 09.41.53.jpeg",
+        "size": 281006,
+        "name": "WhatsApp Image 2024-07-17 at 09.41.53.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/BABolt-Update Kuma version on DEV1-100425-183643.pdf",
+        "size": 4070930,
+        "name": "BABolt-Update Kuma version on DEV1-100425-183643.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2024-06-12 at 08.58.46.jpeg",
+        "size": 302887,
+        "name": "WhatsApp Image 2024-06-12 at 08.58.46.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/historiaLaboral-1.pdf",
+        "size": 167953,
+        "name": "historiaLaboral-1.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2024-07-17 at 09.41.53 (1).jpeg",
+        "size": 290402,
+        "name": "WhatsApp Image 2024-07-17 at 09.41.53 (1).jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/BABolt-Kuma upgrade plan v2.7.x to v2.8.x-100425-183329.pdf",
+        "size": 4104920,
+        "name": "BABolt-Kuma upgrade plan v2.7.x to v2.8.x-100425-183329.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/document (1).pdf",
+        "size": 661584,
+        "name": "document (1).pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/Comprobante de pago en linea (2).pdf",
+        "size": 11295,
+        "name": "Comprobante de pago en linea (2).pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/SOLICITUD CONSUMO-1.docx",
+        "size": 178454,
+        "name": "SOLICITUD CONSUMO-1.docx"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-07-24 at 11.14.25.jpeg",
+        "size": 61659,
+        "name": "WhatsApp Image 2025-07-24 at 11.14.25.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/redis-command-history-2025-08-30.csv",
+        "size": 46,
+        "name": "redis-command-history-2025-08-30.csv"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/hiphop-rap-beat-90-bmp-262652.mp3",
+        "size": 2743484,
+        "name": "hiphop-rap-beat-90-bmp-262652.mp3"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/About BA (1).txt",
+        "size": 7871,
+        "name": "About BA (1).txt"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/github-recovery-codes (2).txt",
+        "size": 206,
+        "name": "github-recovery-codes (2).txt"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2024-06-25 at 13.07.49.jpeg",
+        "size": 294659,
+        "name": "WhatsApp Image 2024-06-25 at 13.07.49.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/BABolt-Update Kuma version on SIT1-100425-183737.pdf",
+        "size": 2775685,
+        "name": "BABolt-Update Kuma version on SIT1-100425-183737.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/image (3).png",
+        "size": 49579,
+        "name": "image (3).png"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/BABolt-Kuma Implementation-140425-202610.pdf",
+        "size": 4818686,
+        "name": "BABolt-Kuma Implementation-140425-202610.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2024-07-17 at 09.41.53 (2).jpeg",
+        "size": 186869,
+        "name": "WhatsApp Image 2024-07-17 at 09.41.53 (2).jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/image (2).png",
+        "size": 57625,
+        "name": "image (2).png"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/CV-CC-1042770880.pdf",
+        "size": 122408,
+        "name": "CV-CC-1042770880.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-04-21 at 15.17.40.jpeg",
+        "size": 15916,
+        "name": "WhatsApp Image 2025-04-21 at 15.17.40.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-05-12 at 18.37.40.jpeg",
+        "size": 79327,
+        "name": "WhatsApp Image 2025-05-12 at 18.37.40.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2024-06-30 at 10.11.33.jpeg",
+        "size": 150698,
+        "name": "WhatsApp Image 2024-06-30 at 10.11.33.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-04-02 at 13.22.47 (1).jpeg",
+        "size": 118730,
+        "name": "WhatsApp Image 2025-04-02 at 13.22.47 (1).jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/Portfolio-jaime~python-app-12~S0V3KK.dockerbuild.zip",
+        "size": 17071,
+        "name": "Portfolio-jaime~python-app-12~S0V3KK.dockerbuild.zip"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-04-19 at 10.36.56.jpeg",
+        "size": 43841,
+        "name": "WhatsApp Image 2025-04-19 at 10.36.56.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/4433241104513936 (1).pdf",
+        "size": 128609,
+        "name": "4433241104513936 (1).pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-03-30 at 20.22.49.jpeg",
+        "size": 58093,
+        "name": "WhatsApp Image 2025-03-30 at 20.22.49.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/5. FORMATO ACTUALIZACIO\u0301N BENEFICIARIOS-editable (1) (1).pdf",
+        "size": 278008,
+        "name": "5. FORMATO ACTUALIZACIO\u0301N BENEFICIARIOS-editable (1) (1).pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-09-18 at 12.26.25.jpeg",
+        "size": 227403,
+        "name": "WhatsApp Image 2025-09-18 at 12.26.25.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-03-11 at 17.07 Background Removed.03.png",
+        "size": 506170,
+        "name": "WhatsApp Image 2025-03-11 at 17.07 Background Removed.03.png"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2024-06-25 at 13.07.51.jpeg",
+        "size": 245625,
+        "name": "WhatsApp Image 2024-06-25 at 13.07.51.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/Redis_inventory (1).xlsx",
+        "size": 27165,
+        "name": "Redis_inventory (1).xlsx"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/Screenshot at Apr 01 11-32-17.png",
+        "size": 155696,
+        "name": "Screenshot at Apr 01 11-32-17.png"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/Screenshot at Mar 19 16-13-59.png",
+        "size": 91361,
+        "name": "Screenshot at Mar 19 16-13-59.png"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/Formula1-e6713905-2f59-48f3-9626-0f92491c6475-1.pdf",
+        "size": 90577,
+        "name": "Formula1-e6713905-2f59-48f3-9626-0f92491c6475-1.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/image (1).png",
+        "size": 57011,
+        "name": "image (1).png"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-05-12 at 18.37.34.jpeg",
+        "size": 69440,
+        "name": "WhatsApp Image 2025-05-12 at 18.37.34.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2024-07-17 at 09.41.51 (1).jpeg",
+        "size": 414885,
+        "name": "WhatsApp Image 2024-07-17 at 09.41.51 (1).jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2024-07-17 at 09.41.50 (1).jpeg",
+        "size": 291844,
+        "name": "WhatsApp Image 2024-07-17 at 09.41.50 (1).jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/Screenshot at Mar 17 06-24-32.png",
+        "size": 559288,
+        "name": "Screenshot at Mar 17 06-24-32.png"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/argocd-prueba.2024-04-24.private-key.pem",
+        "size": 1679,
+        "name": "argocd-prueba.2024-04-24.private-key.pem"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-04-19 at 10.43.43 (1).jpeg",
+        "size": 17640,
+        "name": "WhatsApp Image 2025-04-19 at 10.43.43 (1).jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-01-12 at 17.45.28.jpeg",
+        "size": 100667,
+        "name": "WhatsApp Image 2025-01-12 at 17.45.28.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/Presentation-1.pptx",
+        "size": 7420520,
+        "name": "Presentation-1.pptx"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/BABolt-Kuma upgrade plan v2.7.x to v2.8.x-140425-195634.pdf",
+        "size": 4104920,
+        "name": "BABolt-Kuma upgrade plan v2.7.x to v2.8.x-140425-195634.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-05-12 at 18.37.39.jpeg",
+        "size": 111869,
+        "name": "WhatsApp Image 2025-05-12 at 18.37.39.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/Pasaporte (1).jpg",
+        "size": 190618,
+        "name": "Pasaporte (1).jpg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2024-12-13 at 16.41.45.jpeg",
+        "size": 439630,
+        "name": "WhatsApp Image 2024-12-13 at 16.41.45.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/Cloud Engineer (1).pdf",
+        "size": 50085,
+        "name": "Cloud Engineer (1).pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/Jaime Andres Henao Arbelaez-11.8 vs New Orleans Pelicans- 27H3W2.pdf",
+        "size": 228989,
+        "name": "Jaime Andres Henao Arbelaez-11.8 vs New Orleans Pelicans- 27H3W2.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-03-11 at 17.07.03.jpeg",
+        "size": 205878,
+        "name": "WhatsApp Image 2025-03-11 at 17.07.03.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/recomendaciones (1).csv",
+        "size": 1234,
+        "name": "recomendaciones (1).csv"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-04-21 at 15.17.23.jpeg",
+        "size": 23739,
+        "name": "WhatsApp Image 2025-04-21 at 15.17.23.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/github-recovery-codes (1).txt",
+        "size": 206,
+        "name": "github-recovery-codes (1).txt"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/Extracto_835858170_202504_Ordinario_6617 (1).pdf",
+        "size": 837602,
+        "name": "Extracto_835858170_202504_Ordinario_6617 (1).pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-03-29 at 15.38.07.jpeg",
+        "size": 44104,
+        "name": "WhatsApp Image 2025-03-29 at 15.38.07.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/BABolt-Plan to Build Kubectl ECR Image Compatible with Kuma 2.8.1-140425-202947.pdf",
+        "size": 467798,
+        "name": "BABolt-Plan to Build Kubectl ECR Image Compatible with Kuma 2.8.1-140425-202947.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/Redis_inventory (2).xlsx",
+        "size": 42030,
+        "name": "Redis_inventory (2).xlsx"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/Comprobante de pago en linea (1).pdf",
+        "size": 11297,
+        "name": "Comprobante de pago en linea (1).pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/BABolt-Connect as administrator in EKS clusters and Troubleshooting Redis-230425-141130.pdf",
+        "size": 1310922,
+        "name": "BABolt-Connect as administrator in EKS clusters and Troubleshooting Redis-230425-141130.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2024-07-17 at 09.41.51.jpeg",
+        "size": 355363,
+        "name": "WhatsApp Image 2024-07-17 at 09.41.51.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2024-12-13 at 16.41.45 (1).jpeg",
+        "size": 439630,
+        "name": "WhatsApp Image 2024-12-13 at 16.41.45 (1).jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/OtroDocumento1-74d650c8-20db-4bb4-ad01-79b83f785a0c.pdf",
+        "size": 5352,
+        "name": "OtroDocumento1-74d650c8-20db-4bb4-ad01-79b83f785a0c.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-03-30 at 20.22.18.jpeg",
+        "size": 96734,
+        "name": "WhatsApp Image 2025-03-30 at 20.22.18.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2024-07-17 at 09.41.50 (2).jpeg",
+        "size": 449423,
+        "name": "WhatsApp Image 2024-07-17 at 09.41.50 (2).jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/BABolt-Update Kuma version on Infradev1 & Infradev2-100425-183547.pdf",
+        "size": 1861386,
+        "name": "BABolt-Update Kuma version on Infradev1 & Infradev2-100425-183547.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2025-05-12 at 18.37.29.jpeg",
+        "size": 162187,
+        "name": "WhatsApp Image 2025-05-12 at 18.37.29.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/775160-422-444551-20250709AB0CDLAB.pdf",
+        "size": 350060,
+        "name": "775160-422-444551-20250709AB0CDLAB.pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/WhatsApp Image 2024-07-17 at 09.41.50.jpeg",
+        "size": 373251,
+        "name": "WhatsApp Image 2024-07-17 at 09.41.50.jpeg"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/Downloads-20240530T151644Z-001.zip",
+        "size": 395938787,
+        "name": "Downloads-20240530T151644Z-001.zip"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/co.com.winet.ipsa.impresion (1).pdf",
+        "size": 91985,
+        "name": "co.com.winet.ipsa.impresion (1).pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/5. FORMATO ACTUALIZACIO\u0301N BENEFICIARIOS-editable (1).pdf",
+        "size": 278008,
+        "name": "5. FORMATO ACTUALIZACIO\u0301N BENEFICIARIOS-editable (1).pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/campus Pedro Justo Berrio (1).pdf",
+        "size": 40739,
+        "name": "campus Pedro Justo Berrio (1).pdf"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/testjenkinscnnectionautomotion.2025-02-17.private-key.pem",
+        "size": 1679,
+        "name": "testjenkinscnnectionautomotion.2025-02-17.private-key.pem"
+      },
+      {
+        "path": "/Users/jaime.henao/Downloads/BABolt-Kuma upgrade pre-analysis-100425-183455.pdf",
+        "size": 87196,
+        "name": "BABolt-Kuma upgrade pre-analysis-100425-183455.pdf"
+      }
+    ]
+  },
+  "trash": {
+    "total_cleaned": 0,
+    "files_count": 0
+  },
+  "browsers": {
+    "total_cleaned": 0,
+    "results": [
+      {
+        "browser": "Chrome",
+        "path": "/Users/jaime.henao/Library/Application Support/Google/Chrome/Default/Service Worker",
+        "initial_size": 893723528,
+        "cleaned_size": 0
+      },
+      {
+        "browser": "Safari",
+        "path": "/Users/jaime.henao/Library/Caches/com.apple.Safari",
+        "initial_size": 0,
+        "cleaned_size": 0
+      },
+      {
+        "browser": "Firefox",
+        "path": "/Users/jaime.henao/Library/Application Support/Firefox/Profiles",
+        "initial_size": 117587288,
+        "cleaned_size": 0
+      },
+      {
+        "browser": "Edge",
+        "path": "/Users/jaime.henao/Library/Application Support/Microsoft Edge/Default/Service Worker",
+        "initial_size": 872866217,
+        "cleaned_size": 0
+      }
+    ]
+  }
+}

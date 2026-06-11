@@ -1,0 +1,24 @@
+{
+  "timestamp": "2025-09-22T10:15:02.663705",
+  "health_info": {
+    "current_capacity": 80,
+    "amperage": 0,
+    "max_capacity": 100,
+    "temperature": 30.75,
+    "design_capacity": 6075,
+    "is_charging": false,
+    "voltage": 12.045,
+    "cycle_count": 117
+  },
+  "metrics": {
+    "health_percentage": 1.646090534979424,
+    "health_status": "Necesita reemplazo",
+    "current_charge": 80.0,
+    "cycle_health": 88.3
+  },
+  "pmset_info": {
+    "battery_status": "Now drawing from 'AC Power'\n -InternalBattery-0 (id=35913827)\t80%; AC attached; not charging present: true\n",
+    "power_settings": "System-wide power settings:\n DestroyFVKeyOnStandby\t\t0\nCurrently in use:\n standby              1\n Sleep On Power Button 1\n hibernatefile        /var/vm/sleepimage\n powernap             1\n networkoversleep     0\n disksleep            180\n sleep                0 (sleep prevented by powerd)\n hibernatemode        3\n ttyskeepawake        1\n displaysleep         15\n tcpkeepalive         1\n lowpowermode         0\n womp                 1\n",
+    "raw_battery_state": "Error: unhandled argument rawbatterystate\nUsage: pmset <options>\nSee pmset(1) for details: 'man pmset'\n"
+  }
+}

@@ -1,0 +1,331 @@
+{
+  "timestamp": "2025-09-22T10:15:05.531839",
+  "interfaces": {
+    "lo0": {
+      "raw": "lo0: flags=8049<UP,LOOPBACK,RUNNING,MULTICAST> mtu 16384\n\toptions=1203<RXCSUM,TXCSUM,TXSTATUS,SW_TIMESTAMP>\n\tinet 127.0.0.1 netmask 0xff000000\n\tinet6 ::1 prefixlen 128 \n\tinet6 fe80::1%lo0 prefixlen 64 scopeid 0x1 \n\tnd6 options=201<PERFORMNUD,DAD>"
+    },
+    "gif0": {
+      "raw": "gif0: flags=8010<POINTOPOINT,MULTICAST> mtu 1280"
+    },
+    "stf0": {
+      "raw": "stf0: flags=0<> mtu 1280"
+    },
+    "anpi2": {
+      "raw": "anpi2: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500\n\toptions=400<CHANNEL_IO>\n\tether 96:d4:e6:f4:00:0a\n\tmedia: none\n\tstatus: inactive"
+    },
+    "anpi1": {
+      "raw": "anpi1: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500\n\toptions=400<CHANNEL_IO>\n\tether 96:d4:e6:f4:00:09\n\tmedia: none\n\tstatus: inactive"
+    },
+    "anpi0": {
+      "raw": "anpi0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500\n\toptions=400<CHANNEL_IO>\n\tether 96:d4:e6:f4:00:08\n\tmedia: none\n\tstatus: inactive"
+    },
+    "en4": {
+      "raw": "en4: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500\n\toptions=400<CHANNEL_IO>\n\tether 96:d4:e6:f4:00:e8\n\tnd6 options=201<PERFORMNUD,DAD>\n\tmedia: none\n\tstatus: inactive"
+    },
+    "en5": {
+      "raw": "en5: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500\n\toptions=400<CHANNEL_IO>\n\tether 96:d4:e6:f4:00:e9\n\tnd6 options=201<PERFORMNUD,DAD>\n\tmedia: none\n\tstatus: inactive"
+    },
+    "en6": {
+      "raw": "en6: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500\n\toptions=400<CHANNEL_IO>\n\tether 96:d4:e6:f4:00:ea\n\tnd6 options=201<PERFORMNUD,DAD>\n\tmedia: none\n\tstatus: inactive"
+    },
+    "en1": {
+      "raw": "en1: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500\n\toptions=460<TSO4,TSO6,CHANNEL_IO>\n\tether 36:d2:52:41:1e:80\n\tmedia: autoselect <full-duplex>\n\tstatus: inactive"
+    },
+    "en2": {
+      "raw": "en2: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500\n\toptions=460<TSO4,TSO6,CHANNEL_IO>\n\tether 36:d2:52:41:1e:84\n\tmedia: autoselect <full-duplex>\n\tstatus: inactive"
+    },
+    "en3": {
+      "raw": "en3: flags=8963<UP,BROADCAST,SMART,RUNNING,PROMISC,SIMPLEX,MULTICAST> mtu 1500\n\toptions=460<TSO4,TSO6,CHANNEL_IO>\n\tether 36:d2:52:41:1e:88\n\tmedia: autoselect <full-duplex>\n\tstatus: inactive"
+    },
+    "en9": {
+      "raw": "en9: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500\n\toptions=404<VLAN_MTU,CHANNEL_IO>\n\tether f8:e4:3b:1f:5e:18\n\tinet6 fe80::817:94c8:8a92:d4e1%en9 prefixlen 64 secured scopeid 0xd \n\tinet 192.168.58.101 netmask 0xffffff00 broadcast 192.168.58.255\n\tnd6 options=201<PERFORMNUD,DAD>\n\tmedia: autoselect (1000baseT <full-duplex>)\n\tstatus: active"
+    },
+    "bridge0": {
+      "raw": "bridge0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500\n\toptions=63<RXCSUM,TXCSUM,TSO4,TSO6>\n\tether 36:d2:52:41:1e:80\n\tConfiguration:\n\t\tid 0:0:0:0:0:0 priority 0 hellotime 0 fwddelay 0\n\t\tmaxage 0 holdcnt 0 proto stp maxaddr 100 timeout 1200\n\t\troot id 0:0:0:0:0:0 priority 0 ifcost 0 port 0\n\t\tipfilter disabled flags 0x0\n\tmember: en1 flags=3<LEARNING,DISCOVER>\n\t        ifmaxaddr 0 port 10 priority 0 path cost 0\n\tmember: en2 flags=3<LEARNING,DISCOVER>\n\t        ifmaxaddr 0 port 11 priority 0 path cost 0\n\tmember: en3 flags=3<LEARNING,DISCOVER>\n\t        ifmaxaddr 0 port 12 priority 0 path cost 0\n\tnd6 options=201<PERFORMNUD,DAD>\n\tmedia: <unknown type>\n\tstatus: inactive"
+    },
+    "ap1": {
+      "raw": "ap1: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500\n\toptions=6460<TSO4,TSO6,CHANNEL_IO,PARTIAL_CSUM,ZEROINVERT_CSUM>\n\tether da:70:45:e1:6d:53\n\tnd6 options=201<PERFORMNUD,DAD>\n\tmedia: autoselect (none)\n\tstatus: inactive"
+    },
+    "en0": {
+      "raw": "en0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500\n\toptions=6460<TSO4,TSO6,CHANNEL_IO,PARTIAL_CSUM,ZEROINVERT_CSUM>\n\tether da:63:dc:6b:52:bd\n\tmedia: autoselect (none)"
+    },
+    "awdl0": {
+      "raw": "awdl0: flags=8822<BROADCAST,SMART,SIMPLEX,MULTICAST> mtu 1500\n\toptions=400<CHANNEL_IO>\n\tether 86:79:02:19:75:5e\n\tmedia: autoselect (none)"
+    },
+    "llw0": {
+      "raw": "llw0: flags=8863<UP,BROADCAST,SMART,RUNNING,SIMPLEX,MULTICAST> mtu 1500\n\toptions=400<CHANNEL_IO>\n\tether 86:79:02:19:75:5e\n\tinet6 fe80::8479:2ff:fe19:755e%llw0 prefixlen 64 scopeid 0x12 \n\tnd6 options=201<PERFORMNUD,DAD>\n\tmedia: autoselect (none)"
+    },
+    "utun0": {
+      "raw": "utun0: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 1500\n\tinet6 fe80::fda3:21ea:842f:16bb%utun0 prefixlen 64 scopeid 0x13 \n\tnd6 options=201<PERFORMNUD,DAD>"
+    },
+    "utun1": {
+      "raw": "utun1: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 1380\n\tinet6 fe80::a847:a398:1eb3:8d1b%utun1 prefixlen 64 scopeid 0x14 \n\tnd6 options=201<PERFORMNUD,DAD>"
+    },
+    "utun2": {
+      "raw": "utun2: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 2000\n\tinet6 fe80::90bf:8b1b:6718:5879%utun2 prefixlen 64 scopeid 0x15 \n\tnd6 options=201<PERFORMNUD,DAD>"
+    },
+    "utun3": {
+      "raw": "utun3: flags=8051<UP,POINTOPOINT,RUNNING,MULTICAST> mtu 1000\n\tinet6 fe80::ce81:b1c:bd2c:69e%utun3 prefixlen 64 scopeid 0x16 \n\tnd6 options=201<PERFORMNUD,DAD>"
+    },
+    "utun4": {
+      "raw": "utun4: flags=80d1<UP,POINTOPOINT,RUNNING,NOARP,MULTICAST> mtu 1300\n\tinet 10.121.99.243 --> 10.121.99.243 netmask 0xfffffc00\n\tinet6 fe80::fae4:3bff:fe1f:5e18%utun4 prefixlen 64 scopeid 0x17 \n\tinet6 fe80::2307:2548:d7eb:5862%utun4 prefixlen 128 scopeid 0x17 \n\tnd6 options=201<PERFORMNUD,DAD>"
+    }
+  },
+  "wifi_info": {
+    "WARNING": "The airport command line tool is deprecated and will be removed in a future release.",
+    "available_networks": "WARNING: The airport command line tool is deprecated and will be removed in a future release.\nFor diagnosing Wi-Fi related issues, use the Wireless Diagnostics app or wdutil command line tool.\n"
+  },
+  "network_stats": {
+    "lo0": [
+      71692288,
+      71692288,
+      96699,
+      96699,
+      0,
+      0,
+      0,
+      0
+    ],
+    "gif0": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "stf0": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "anpi2": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "anpi1": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "anpi0": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "en4": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "en5": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "en6": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "en1": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "en2": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "en3": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "en9": [
+      433425408,
+      2497763328,
+      1188229,
+      2293315,
+      0,
+      0,
+      0,
+      0
+    ],
+    "bridge0": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "ap1": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "en0": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "awdl0": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "llw0": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "utun0": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "utun1": [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "utun2": [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "utun3": [
+      0,
+      0,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "utun4": [
+      318912512,
+      3377711104,
+      1062341,
+      3581592,
+      0,
+      0,
+      0,
+      0
+    ]
+  },
+  "connectivity_tests": {
+    "google_dns": "OK",
+    "cloudflare_dns": "OK",
+    "google_web": {
+      "status": "OK",
+      "response_time": 524.88
+    },
+    "apple": {
+      "status": "OK",
+      "response_time": 878.94
+    }
+  },
+  "dns_info": {
+    "dns_config": "DNS configuration\n\nresolver #1\n  nameserver[0] : 10.121.2.218\n  flags    : Request A records, Request AAAA records\n  reach    : 0x00000002 (Reachable)\n  order    : 1\n\nresolver #2\n  domain   : local\n  options  : mdns\n  timeout  : 5\n  flags    : Request A records, Request AAAA records\n  reach    : 0x00000000 (Not Reachable)\n  order    : 300000\n\nresolver #3\n  domain   : 254.169.in-addr.arpa\n  options  : mdns\n  timeout  : 5\n  flags    : Request A records, Request AAAA records\n  reach    : 0x00000000 (Not Reachable)\n  order    : 300200\n\nresolver #4\n  domain   : 8.e.f.ip6.arpa\n  options  : mdns\n  timeout  : 5\n  flags    : Request A records, Request AAAA records\n  reach    : 0x00000000 (Not Reachable)\n  order    : 300400\n\nresolver #5\n  domain   : 9.e.f.ip6.arpa\n  options  : mdns\n  timeout  : 5\n  flags    : Request A records, Request AAAA records\n  reach    : 0x00000000 (Not Reachable)\n  order    : 300600\n\nresolver #6\n  domain   : a.e.f.ip6.arpa\n  options  : mdns\n  timeout  : 5\n  flags    : Request A records, Request AAAA records\n  reach    : 0x00000000 (Not Reachable)\n  order    : 300800\n\nresolver #7\n  domain   : b.e.f.ip6.arpa\n  options  : mdns\n  timeout  : 5\n  flags    : Request A records, Request AAAA records\n  reach    : 0x00000000 (Not Reachable)\n  order    : 301000\n\nDNS configuration (for scoped queries)\n\nresolver #1\n  nameserver[0] : 8.8.8.8\n  nameserver[1] : 8.8.4.4\n  if_index : 13 (en9)\n  flags    : Scoped, Request A records\n  reach    : 0x00000002 (Reachable)\n\nresolver #2\n  nameserver[0] : 10.121.2.218\n  if_index : 23 (utun4)\n  flags    : Scoped, Request A records, Request AAAA records\n  reach    : 0x00000002 (Reachable)\n  order    : 1\n",
+    "dns_resolution_time": 1.03
+  },
+  "active_connections": [
+    {
+      "error": "Acceso denegado - ejecuta como administrador para ver todas las conexiones"
+    }
+  ]
+}
