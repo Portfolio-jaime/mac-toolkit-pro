@@ -50,3 +50,17 @@ SEVERITY_MEDIUM_MB = 100
 
 # Reports
 REPORTS_DIR = Path(__file__).parent.parent.parent / "reports"
+
+DEV_CACHE_PATHS = {
+    "npm":  HOME / ".npm/_cacache",
+    "pip":  HOME / "Library/Caches/pip",
+    "brew": HOME / "Library/Caches/Homebrew",
+}
+
+XCODE_PATHS = {
+    "derived_data": HOME / "Library/Developer/Xcode/DerivedData",
+    "archives":     HOME / "Library/Developer/Xcode/Archives",
+    "simulators":   HOME / "Library/Developer/CoreSimulator/Devices",
+}
+
+TRASH_DIR = HOME / ".Trash"
