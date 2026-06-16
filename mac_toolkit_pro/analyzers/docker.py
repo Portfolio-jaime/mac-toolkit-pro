@@ -45,4 +45,5 @@ class DockerAnalyzer(BaseAnalyzer):
             label="Docker.raw virtual disk",
             domain=self.domain, safe_to_delete=False,
             reason="Run 'docker system prune -a' to reclaim space inside Docker",
+            risk="danger",
         )]

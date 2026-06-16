@@ -36,6 +36,7 @@ class ReposAnalyzer(BaseAnalyzer):
                             label=f"{candidate.parent.name}/{candidate.name}",
                             domain=self.domain, safe_to_delete=True,
                             reason=f"Reinstallable dependency dir ({candidate.name})",
+                            risk="safe",
                         ))
             except PermissionError:
                 continue

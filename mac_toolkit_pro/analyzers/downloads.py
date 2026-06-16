@@ -32,6 +32,7 @@ class DownloadsAnalyzer(BaseAnalyzer):
                                 label=f.name, domain=self.domain,
                                 safe_to_delete=is_dup,
                                 reason=reason,
+                                risk="warn",
                             ))
                     except OSError:
                         continue

@@ -23,6 +23,7 @@ class AppSupportAnalyzer(BaseAnalyzer):
                         label=app_dir.name, domain=self.domain,
                         safe_to_delete=False,
                         reason="Application data — verify app is uninstalled before deleting",
+                        risk="warn",
                     ))
         except PermissionError:
             pass

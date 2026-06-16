@@ -29,6 +29,8 @@ class LogsAnalyzer(BaseAnalyzer):
                                 label=f"{log_file.name} ({age_days}d old)",
                                 domain=self.domain, safe_to_delete=True,
                                 reason=f"Log file {age_days} days old",
+                                risk="safe",
+                                age_days=age_days,
                             ))
                     except OSError:
                         continue

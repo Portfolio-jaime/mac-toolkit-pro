@@ -28,6 +28,7 @@ class OllamaAnalyzer(BaseAnalyzer):
                         label=blob.name[:20], domain=self.domain,
                         safe_to_delete=False,
                         reason="Ollama model blob — verify model is unused before deleting",
+                        risk="danger",
                     ))
         except PermissionError as e:
             return AnalysisResult(
