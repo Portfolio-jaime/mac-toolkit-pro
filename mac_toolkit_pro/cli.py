@@ -3,13 +3,12 @@
 from __future__ import annotations
 import click
 from datetime import datetime
-from rich.console import Console
-
 from mac_toolkit_pro.core.config import REPORTS_DIR, DEFAULT_MIN_SIZE_MB
 from mac_toolkit_pro.core.runner import run_analyzers
 from mac_toolkit_pro.core.approval import ApprovalEngine
 from mac_toolkit_pro.cleaners.generic import GenericCleaner
 from mac_toolkit_pro.reporters import terminal, markdown, json_reporter, audit
+from mac_toolkit_pro.reporters.terminal import console
 from mac_toolkit_pro.analyzers.disk import DiskAnalyzer
 from mac_toolkit_pro.analyzers.ollama import OllamaAnalyzer
 from mac_toolkit_pro.analyzers.docker import DockerAnalyzer
@@ -18,8 +17,9 @@ from mac_toolkit_pro.analyzers.logs import LogsAnalyzer
 from mac_toolkit_pro.analyzers.downloads import DownloadsAnalyzer
 from mac_toolkit_pro.analyzers.appsupport import AppSupportAnalyzer
 from mac_toolkit_pro.analyzers.repos import ReposAnalyzer
-
-console = Console()
+from mac_toolkit_pro.analyzers.dev_caches import DevCachesAnalyzer
+from mac_toolkit_pro.analyzers.xcode import XcodeAnalyzer
+from mac_toolkit_pro.analyzers.trash import TrashAnalyzer
 
 ALL_ANALYZERS = [
     DiskAnalyzer().analyze,
@@ -30,6 +30,9 @@ ALL_ANALYZERS = [
     DownloadsAnalyzer().analyze,
     AppSupportAnalyzer().analyze,
     ReposAnalyzer().analyze,
+    DevCachesAnalyzer().analyze,
+    XcodeAnalyzer().analyze,
+    TrashAnalyzer().analyze,
 ]
 
 
