@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[project]
+name = "mac-toolkit-pro"
+version = "2.0.0"
+description = "Mac DevOps Toolkit Pro — disk analysis and safe cleanup"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "click>=8.1",
+    "rich>=13.0",
+    "questionary>=2.0",
+]
+
+[project.scripts]
+toolkit = "mac_toolkit_pro.cli:cli"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["mac_toolkit_pro*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
