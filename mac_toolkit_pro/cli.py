@@ -36,6 +36,18 @@ ALL_ANALYZERS = [
 ]
 
 
+def _filter_analyzers(domain):
+    if domain is None:
+        return ALL_ANALYZERS
+    valid = {fn.__self__.domain for fn in ALL_ANALYZERS}
+    if domain not in valid:
+        raise click.BadParameter(
+            f"Unknown domain '{domain}'. Valid: {', '.join(sorted(valid))}",
+            param_hint="--domain",
+        )
+    return [fn for fn in ALL_ANALYZERS if fn.__self__.domain == domain]
+
+
 @click.group()
 def cli():
     """🖥  Mac DevOps Toolkit Pro — Disk analysis and safe cleanup."""
@@ -46,11 +58,13 @@ def cli():
 @click.option("--save", is_flag=True, help="Save MD + JSON reports to reports/")
 @click.option("--verbose", is_flag=True, help="Show all items")
 @click.option("--min-size", default=DEFAULT_MIN_SIZE_MB, show_default=True, help="Min MB to display")
-def analyze(save, verbose, min_size):
+@click.option("--domain", default=None, help="Run only this domain (e.g. dev_caches)")
+def analyze(save, verbose, min_size, domain):
     """Run full disk analysis across all 8 domains in parallel."""
+    analyzers = _filter_analyzers(domain)
     console.print("\n[bold cyan]🔍 Running analysis across all domains...[/]\n")
     with console.status("[dim]Scanning in parallel (up to 30s per domain)...[/]"):
-        results = run_analyzers(ALL_ANALYZERS)
+        results = run_analyzers(analyzers)
 
     terminal.print_summary(results)
     if verbose:
@@ -71,13 +85,15 @@ def analyze(save, verbose, min_size):
               show_default=True, help="Approval mode")
 @click.option("--execute", is_flag=True, default=False, help="Perform real deletions (default: dry-run)")
 @click.option("--min-size", default=DEFAULT_MIN_SIZE_MB, show_default=True)
-def clean(mode, execute, min_size):
+@click.option("--domain", default=None, help="Clean only this domain (e.g. dev_caches)")
+def clean(mode, execute, min_size, domain):
     """Analyze, then clean with interactive approval."""
+    analyzers = _filter_analyzers(domain)
     if not execute:
         console.print("\n[dim]🔍 SIMULATION MODE — no files deleted. Use --execute to delete for real.[/]\n")
 
     with console.status("[dim]Scanning...[/]"):
-        results = run_analyzers(ALL_ANALYZERS)
+        results = run_analyzers(analyzers)
 
     terminal.print_summary(results)
     terminal.print_items(results, min_size_bytes=min_size * 1024 * 1024)
