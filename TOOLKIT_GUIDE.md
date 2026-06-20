@@ -1,90 +1,103 @@
 # 🖥 Mac DevOps Toolkit Pro — Guía de Comandos
 
-**Ruta:** `scripts-mac/`  
-**Entry point:** `./toolkit`
+**Repo:** [Portfolio-jaime/mac-toolkit-pro](https://github.com/Portfolio-jaime/mac-toolkit-pro)  
+**Entry point:** `toolkit` (tras `pip install -e .`) o `./toolkit` (desde el repo)
 
 ---
 
-## Instalación rápida
+## Instalación
 
+### Opción A — pip (recomendado)
 ```bash
-cd scripts-mac
-pip3 install click rich questionary pytest
+git clone git@github-portfolio:Portfolio-jaime/mac-toolkit-pro.git
+cd mac-toolkit-pro
+pip install -e .
+toolkit --help    # disponible globalmente
+```
+
+### Opción B — desde el repo sin instalar
+```bash
+pip install click rich questionary
 ./toolkit --help
 ```
 
 ---
 
-## Comandos principales
+## Comandos
 
-### `analyze` — Solo análisis (nunca borra)
+### `analyze` — Solo análisis, nunca borra
 
 ```bash
-# Análisis completo de los 8 dominios en paralelo
-./toolkit analyze
+# Análisis completo (11 dominios en paralelo)
+toolkit analyze
 
-# Análisis + guardar reportes (MD + JSON en reports/)
-./toolkit analyze --save
+# Guardar reportes MD + JSON en reports/
+toolkit analyze --save
 
-# Mostrar todos los archivos encontrados
-./toolkit analyze --verbose
+# Mostrar todos los items encontrados
+toolkit analyze --verbose
 
-# Filtrar por tamaño mínimo (default: 50MB)
-./toolkit analyze --verbose --min-size 200
+# Filtrar por tamaño mínimo (default 50MB)
+toolkit analyze --verbose --min-size 200
 
-# Todo junto
-./toolkit analyze --save --verbose --min-size 100
+# Solo un dominio específico
+toolkit analyze --domain dev_caches
+toolkit analyze --domain xcode --verbose
 ```
 
 ---
 
-### `clean` — Analizar + limpiar con aprobación
+### `clean` — Analizar + limpiar con aprobación interactiva
 
-> ⚠️ **Por defecto es SIMULACIÓN.** Agrega `--execute` para borrar de verdad.
+> ⚠️ Por defecto es **SIMULACIÓN**. Agrega `--execute` para borrar de verdad.
+> Antes de borrar muestra una tabla de preview con tamaño, riesgo y antigüedad.
 
 ```bash
-# Simulación (modo deal — resumen → aprueba por categoría)
-./toolkit clean
+# Simulación — modo deal (default)
+toolkit clean
 
-# Ver qué limpiaría, pregunta por categoría
-./toolkit clean --mode category
+# Pregunta por categoría
+toolkit clean --mode category
 
-# Ítem por ítem (el más granular)
-./toolkit clean --mode item
+# Ítem por ítem (más granular)
+toolkit clean --mode item
 
-# Menú tipo checkbox con flechas + espacio
-./toolkit clean --mode checklist
+# Checkbox interactivo con flechas + espacio
+toolkit clean --mode checklist
 
-# Resumen total primero → luego por categoría (default)
-./toolkit clean --mode deal
+# Solo un dominio
+toolkit clean --domain dev_caches
+toolkit clean --domain xcode --mode item
 
-# ⚡ EJECUCIÓN REAL — borra archivos aprobados
-./toolkit clean --execute
-
-# REAL con modo específico
-./toolkit clean --execute --mode category
-./toolkit clean --execute --mode checklist
-
-# REAL filtrando solo archivos >500MB
-./toolkit clean --execute --mode deal --min-size 500
+# ⚡ EJECUCIÓN REAL
+toolkit clean --execute
+toolkit clean --execute --mode checklist
+toolkit clean --execute --domain dev_caches
+toolkit clean --execute --min-size 500
 ```
 
 ---
 
-### `full` — Flujo completo: analiza → reporta → limpia
+### `status` — Ver todos los dominios registrados
 
 ```bash
-# Simulación completa (nunca borra)
-./toolkit full
+toolkit status
+# Muestra tabla: dominio, clase, nivel de riesgo
+```
 
-# Simulación con modo checklist
-./toolkit full --mode checklist
+---
 
-# Ejecución real
-./toolkit full --execute
+### `full` — Flujo completo: analiza → guarda reportes → limpia
 
-# Ejecución real con aprobación por categoría
-./toolkit full --execute --mode category
+```bash
+# Simulación completa
+toolkit full
+
+# Ejecución real con checklist
+toolkit full --execute --mode checklist
+
+# Ejecución real modo deal
+toolkit full --execute
 ```
 
 ---
@@ -92,27 +105,27 @@ pip3 install click rich questionary pytest
 ### `report` — Ver reportes guardados
 
 ```bash
-# Ver el último reporte guardado
-./toolkit report --last
-
-# Los reportes se guardan en:
+toolkit report --last
 ls reports/
 ```
 
 ---
 
-## Dominios que analiza
+## Dominios (11 en v2)
 
-| Dominio | Qué escanea |
-|---------|------------|
-| `disk` | Volumen APFS — uso total del disco |
-| `ollama` | `~/.ollama/models/blobs` — modelos LLM |
-| `docker` | `Docker.raw` — imagen virtual de Docker |
-| `browser` | Cachés Chrome, Safari, Firefox, Edge |
-| `logs` | `~/Library/Logs`, `/var/log` (>7 días) |
-| `downloads` | `~/Downloads`, `~/Desktop` — archivos grandes, ZIPs, duplicados |
-| `appsupport` | `~/Library/Application Support` por app |
-| `repos` | `~/arqueanja`, `~/arheanja` — node_modules, .venv, __pycache__ |
+| Dominio | Qué escanea | Riesgo |
+|---------|-------------|--------|
+| `disk` | Volumen APFS — uso total | — |
+| `ollama` | `~/.ollama/models/blobs` — modelos LLM | 🔴 danger |
+| `docker` | `Docker.raw` — imagen virtual | 🔴 danger |
+| `browser` | Cachés Chrome, Safari, Firefox, Edge | 🟢 safe |
+| `logs` | `~/Library/Logs`, `/var/log` (>7 días) | 🟢 safe |
+| `downloads` | `~/Downloads`, `~/Desktop` — ZIPs, duplicados | 🟡 warn |
+| `appsupport` | `~/Library/Application Support` | 🟡 warn |
+| `repos` | `~/arqueanja`, `~/arheanja` — node_modules, .venv | 🟢 safe |
+| `dev_caches` | npm, pip, brew, Gradle, Maven, Cargo, Go | 🟢 safe |
+| `xcode` | DerivedData, Simulators (safe) · Archives (warn) | 🟢/🟡 |
+| `trash` | `~/.Trash` | 🟡 warn |
 
 ---
 
@@ -120,101 +133,78 @@ ls reports/
 
 | Modo | Comportamiento |
 |------|---------------|
-| `deal` | Muestra total → pregunta si arrancar → confirma por categoría |
-| `category` | Muestra cada categoría y pregunta s/N |
-| `item` | Muestra cada archivo individual y pregunta s/N |
-| `checklist` | Menú interactivo con flechas + espacio para seleccionar |
+| `deal` | Total → confirma arrancar → aprueba por categoría |
+| `category` | Pregunta s/N por cada dominio |
+| `item` | Pregunta s/N por cada archivo individual |
+| `checklist` | Menú flechas + espacio para selección múltiple |
 
 ---
 
-## Flags globales
+## Flags
 
-| Flag | Descripción | Default |
-|------|-------------|---------|
-| `--execute` | Borra de verdad (requerido para limpiar) | `False` (dry-run) |
-| `--save` | Guarda reportes MD + JSON | `False` |
-| `--verbose` | Muestra todos los items encontrados | `False` |
-| `--min-size N` | Tamaño mínimo en MB para mostrar | `50` |
-| `--mode` | Modo de aprobación | `deal` |
+| Flag | Comandos | Descripción | Default |
+|------|----------|-------------|---------|
+| `--execute` | clean, full | Borra de verdad | `False` (dry-run) |
+| `--domain` | analyze, clean | Solo este dominio | todos |
+| `--save` | analyze | Guarda reportes MD + JSON | `False` |
+| `--verbose` | analyze | Muestra todos los items | `False` |
+| `--min-size N` | analyze, clean | Tamaño mínimo en MB | `50` |
+| `--mode` | clean, full | Modo de aprobación | `deal` |
 
 ---
 
 ## Reportes generados
 
-Cada `analyze --save` o `full` crea:
 ```
 reports/
-  analysis_20260316_143022/
-    report.md      ← Reporte legible en Markdown
-    report.json    ← Datos estructurados para automatización
-    audit.json     ← Log de auditoría de lo que se borró
+  analysis_20260619_143022/
+    report.md      # Reporte en Markdown
+    report.json    # Datos para automatización
+  cleanup_20260619_150000/
+    audit.json     # Log de lo borrado (path, bytes, resultado)
 ```
 
 ---
 
 ## Flujos recomendados
 
-### 1. Diagnóstico rápido
+### Diagnóstico rápido
 ```bash
-./toolkit analyze
+toolkit analyze
 ```
 
-### 2. Investigación + reporte guardado
+### Liberar espacio de dev caches en un paso
 ```bash
-./toolkit analyze --save --verbose
+toolkit clean --execute --domain dev_caches
 ```
 
-### 3. Limpieza segura (recomendado)
+### Limpieza segura completa
 ```bash
-# Primero simula
-./toolkit full --mode deal
-
-# Si el resultado te gusta, ejecuta
-./toolkit full --execute --mode deal
+toolkit full --mode deal          # simula primero
+toolkit full --execute --mode deal  # ejecuta si el resultado te gusta
 ```
 
-### 4. Limpieza quirúrgica
+### Limpieza quirúrgica de Xcode
 ```bash
-# Ver todo, seleccionar manualmente
-./toolkit clean --execute --mode checklist
+toolkit analyze --domain xcode --verbose
+toolkit clean --execute --domain xcode --mode item
 ```
 
----
-
-## Casos de uso frecuentes
-
-### Liberar espacio de Ollama
+### Ver archivos grandes en Downloads
 ```bash
-./toolkit clean --execute --mode item
-# Aprueba solo los blobs de modelos que no usas
-```
-
-### Limpiar cachés del navegador
-```bash
-./toolkit clean --execute --mode category
-# Aprueba solo "browser"
-```
-
-### Limpiar repos (node_modules, .venv)
-```bash
-./toolkit clean --execute --mode category
-# Aprueba solo "repos"
-```
-
-### Ver archivos >1GB en Downloads/Desktop
-```bash
-./toolkit analyze --verbose --min-size 1000
+toolkit analyze --domain downloads --verbose --min-size 500
 ```
 
 ---
 
 ## Seguridad
 
-- **Nunca borra sin `--execute`** — por defecto todo es simulación
-- **Lista negra protegida** — `/System`, `/usr`, `/bin`, `/sbin`, `com.apple.dock`, `com.apple.finder`, `com.apple.spotlight` nunca se tocan
-- **Audit log** — cada sesión de limpieza queda registrada en `reports/cleanup_*/audit.json`
-- **Timeout 30s por dominio** — si un dominio tarda mucho, devuelve resultado parcial sin bloquear
+- **Sin `--execute` todo es simulación** — nunca borra accidentalmente
+- **Preview antes de borrar** — tabla con tamaño, riesgo y antigüedad de cada item
+- **Lista negra** — `/System`, `/usr`, `/bin`, `/sbin` y prefs de sistema nunca se tocan
+- **Audit log** — cada sesión de limpieza queda en `reports/cleanup_*/audit.json`
+- **Timeout 120s por dominio** — resultado parcial si un dominio tarda demasiado
 
 ---
 
-*Mac DevOps Toolkit Pro — Jaime Henao*
+*Mac DevOps Toolkit Pro v2.0 — Jaime Henao*
