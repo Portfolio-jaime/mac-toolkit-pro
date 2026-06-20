@@ -105,6 +105,7 @@ def clean(mode, execute, min_size, domain):
         console.print("\n[dim]Nothing selected for cleanup.[/]")
         return
 
+    terminal.print_preview_table(approved)
     cleaner = GenericCleaner(dry_run=not execute, execute=execute)
     deletions = cleaner.clean(approved)
 
@@ -185,6 +186,7 @@ def full(mode, execute):
         console.print("[dim]Nothing selected.[/]")
         return
 
+    terminal.print_preview_table(approved)
     cleaner = GenericCleaner(dry_run=not execute, execute=execute)
     deletions = cleaner.clean(approved)
     audit.write_audit_log(out_dir, dry_run=not execute, approval_mode=mode, deletions=deletions)

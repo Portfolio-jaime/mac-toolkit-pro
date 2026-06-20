@@ -1,9 +1,9 @@
-from typing import List
+from typing import List, Optional
 from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
 from rich import box
-from mac_toolkit_pro.core.models import AnalysisResult
+from mac_toolkit_pro.core.models import AnalysisResult, CleanableItem
 
 console = Console()
 
@@ -57,6 +57,31 @@ def print_summary(results: List[AnalysisResult]) -> None:
         f"[bold]Total scanned:[/] {fmt_bytes(total_bytes)}",
         style="dim", expand=False,
     ))
+
+
+_RISK_ICON = {"safe": "🟢 safe", "warn": "🟡 warn", "danger": "🔴 danger"}
+
+
+def print_preview_table(items: List[CleanableItem], console: Optional[Console] = None) -> None:
+    con = console or globals()["console"]
+    if not items:
+        con.print("[dim]Nothing selected for preview.[/]")
+        return
+    total = sum(i.size_bytes for i in items)
+    table = Table(
+        title=f"Preview — {len(items)} items · {fmt_bytes(total)} to delete",
+        box=box.ROUNDED, show_lines=False,
+    )
+    table.add_column("Size", justify="right", width=10)
+    table.add_column("Risk", width=10)
+    table.add_column("Age", justify="right", width=7)
+    table.add_column("Label")
+    table.add_column("Path", style="dim")
+    for item in sorted(items, key=lambda x: x.size_bytes, reverse=True):
+        age = f"{item.age_days}d" if item.age_days is not None else "—"
+        risk_label = _RISK_ICON.get(item.risk, item.risk)
+        table.add_row(fmt_bytes(item.size_bytes), risk_label, age, item.label, str(item.path))
+    con.print(table)
 
 
 def print_items(results: List[AnalysisResult], min_size_bytes: int = 0) -> None:
