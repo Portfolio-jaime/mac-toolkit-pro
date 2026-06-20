@@ -118,6 +118,28 @@ def clean(mode, execute, min_size, domain):
 
 
 @cli.command()
+def status():
+    """Show all registered analyzer domains and their risk level."""
+    from rich.table import Table
+    table = Table(title="Registered Analyzer Domains", show_lines=False)
+    table.add_column("Domain", style="cyan")
+    table.add_column("Analyzer", style="dim")
+    table.add_column("Risk", style="yellow")
+    _risk_map = {
+        "disk": "safe", "ollama": "danger", "docker": "danger",
+        "browser": "safe", "logs": "safe", "downloads": "warn",
+        "appsupport": "warn", "repos": "safe",
+        "dev_caches": "safe", "xcode": "safe/warn", "trash": "warn",
+    }
+    for fn in ALL_ANALYZERS:
+        domain = fn.__self__.domain
+        klass = type(fn.__self__).__name__
+        risk = _risk_map.get(domain, "safe")
+        table.add_row(domain, klass, risk)
+    console.print(table)
+
+
+@cli.command()
 @click.option("--last", is_flag=True, help="Show last saved report")
 def report(last):
     """View saved analysis reports."""
