@@ -194,5 +194,33 @@ def full(mode, execute):
     console.print(f"\n[bold green]✓ Cleaned {len(successes)}/{len(deletions)} items[/]")
 
 
+@cli.command()
+def battery():
+    """Show battery health, cycles and charge status."""
+    from mac_toolkit_pro.monitors.battery import BatteryMonitor
+    BatteryMonitor().display()
+
+
+@cli.command()
+def system():
+    """Show CPU, memory and thermal state."""
+    from mac_toolkit_pro.monitors.system import SystemMonitor
+    SystemMonitor().display()
+
+
+@cli.command()
+def processes():
+    """Show top CPU and memory consuming processes."""
+    from mac_toolkit_pro.monitors.processes import ProcessMonitor
+    ProcessMonitor().display()
+
+
+@cli.command()
+def network():
+    """Show network stats, WiFi info and connectivity."""
+    from mac_toolkit_pro.monitors.network import NetworkMonitor
+    NetworkMonitor().display()
+
+
 if __name__ == "__main__":
     cli()
