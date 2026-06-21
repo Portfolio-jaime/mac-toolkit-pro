@@ -16,21 +16,22 @@ MENU_CHOICES = [
 
 
 def show_menu() -> None:
-    console.print("\n[bold cyan]Mac DevOps Toolkit Pro[/] — choose an action\n")
+    while True:
+        console.print("\n[bold cyan]Mac DevOps Toolkit Pro[/] — choose an action\n")
 
-    choice = questionary.select(
-        "What would you like to do?",
-        choices=[c["name"] for c in MENU_CHOICES],
-    ).ask()
+        choice = questionary.select(
+            "What would you like to do?",
+            choices=[c["name"] for c in MENU_CHOICES],
+        ).ask()
 
-    if choice is None:
-        return
+        if choice is None:
+            return
 
-    value = next((c["value"] for c in MENU_CHOICES if c["name"] == choice), None)
-    if not value or value == "quit":
-        return
+        value = next((c["value"] for c in MENU_CHOICES if c["name"] == choice), None)
+        if not value or value == "quit":
+            return
 
-    _dispatch(value)
+        _dispatch(value)
 
 
 def _dispatch(action: str) -> None:
@@ -70,9 +71,7 @@ def _dispatch(action: str) -> None:
         terminal.print_summary(results)
 
     elif action == "status":
-        from click.testing import CliRunner
-        from mac_toolkit_pro.cli import cli
-        CliRunner().invoke(cli, ["status"], catch_exceptions=False)
+        _show_status()
 
     elif action == "battery":
         from mac_toolkit_pro.monitors.battery import BatteryMonitor
@@ -89,3 +88,24 @@ def _dispatch(action: str) -> None:
     elif action == "network":
         from mac_toolkit_pro.monitors.network import NetworkMonitor
         NetworkMonitor().display()
+
+
+def _show_status() -> None:
+    from rich.table import Table
+    from mac_toolkit_pro.cli import ALL_ANALYZERS
+    _risk_map = {
+        "disk": "—", "ollama": "danger", "docker": "danger",
+        "browser": "safe", "logs": "safe", "downloads": "warn",
+        "appsupport": "warn", "repos": "safe",
+        "dev_caches": "safe", "xcode": "safe/warn", "trash": "warn",
+    }
+    table = Table(title="Registered Analyzer Domains", show_lines=False)
+    table.add_column("Domain", style="cyan")
+    table.add_column("Analyzer", style="dim")
+    table.add_column("Risk", style="yellow")
+    for fn in ALL_ANALYZERS:
+        domain = fn.__self__.domain
+        klass = type(fn.__self__).__name__
+        risk = _risk_map.get(domain, "safe")
+        table.add_row(domain, klass, risk)
+    console.print(table)

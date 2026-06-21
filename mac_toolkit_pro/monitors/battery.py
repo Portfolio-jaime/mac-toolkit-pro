@@ -36,6 +36,10 @@ class BatteryMonitor(BaseMonitor):
     def _calc_health(self, max_cap: int, design_cap: int) -> float:
         if design_cap == 0:
             return 0.0
+        # On Apple Silicon, MaxCapacity is reported as a percentage (0-100),
+        # not in mAh like DesignCapacity. Detect by ratio mismatch.
+        if max_cap <= 100 and design_cap > 1000:
+            return float(max_cap)
         return max_cap / design_cap * 100
 
     def snapshot(self) -> dict:
@@ -45,6 +49,7 @@ class BatteryMonitor(BaseMonitor):
         max_cap = raw.get("max_capacity", 0)
         design_cap = raw.get("design_capacity", 0)
         temp_raw = raw.get("temperature_raw", 0)
+        apple_silicon = max_cap <= 100 and design_cap > 1000
 
         pmset_out = _run(["pmset", "-g", "batt"])
         percent_match = re.search(r"(\d+)%", pmset_out)
@@ -52,7 +57,7 @@ class BatteryMonitor(BaseMonitor):
 
         return {
             "cycle_count": raw.get("cycle_count"),
-            "max_capacity_mah": max_cap,
+            "max_capacity_mah": None if apple_silicon else max_cap,
             "design_capacity_mah": design_cap,
             "health_percent": round(self._calc_health(max_cap, design_cap), 1),
             "current_percent": int(percent_match.group(1)) if percent_match else None,
@@ -61,6 +66,7 @@ class BatteryMonitor(BaseMonitor):
             "voltage_v": round(raw.get("voltage_mv", 0) / 1000.0, 2),
             "is_charging": "yes" in raw.get("is_charging_raw", "").lower()
                            or "true" in raw.get("is_charging_raw", "").lower(),
+            "apple_silicon": apple_silicon,
         }
 
     def display(self) -> None:
@@ -82,7 +88,8 @@ class BatteryMonitor(BaseMonitor):
             ("Time remaining", data.get("time_remaining") or "—"),
             ("Temperature", f"{data.get('temperature_c', '—')} °C"),
             ("Voltage", f"{data.get('voltage_v', '—')} V"),
-            ("Max / Design", f"{data.get('max_capacity_mah')} / {data.get('design_capacity_mah')} mAh"),
+            ("Design capacity", f"{data.get('design_capacity_mah')} mAh") if data.get("apple_silicon")
+            else ("Max / Design", f"{data.get('max_capacity_mah')} / {data.get('design_capacity_mah')} mAh"),
         ]
         for k, v in rows:
             table.add_row(k, v)
