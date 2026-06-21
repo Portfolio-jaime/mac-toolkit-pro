@@ -1,6 +1,11 @@
 # 🖥 Mac DevOps Toolkit Pro
 
-Herramienta CLI para analizar y limpiar espacio en disco en macOS. Escanea 11 dominios en paralelo, muestra severidad y riesgo, y borra solo lo que apruebes.
+CLI para macOS que cubre dos grandes áreas:
+
+- **Disk cleanup** — escanea 11 dominios en paralelo, muestra severidad y riesgo, borra solo lo que apruebes
+- **System monitors** — batería, CPU/memoria, procesos y red en tiempo real
+
+Ejecutar `toolkit` sin argumentos abre el **menú interactivo**.
 
 ## Instalación
 
@@ -8,39 +13,44 @@ Herramienta CLI para analizar y limpiar espacio en disco en macOS. Escanea 11 do
 git clone git@github-portfolio:Portfolio-jaime/mac-toolkit-pro.git
 cd mac-toolkit-pro
 pip install -e .
-toolkit --help
+toolkit    # abre el menú interactivo
 ```
 
-O sin instalar, desde el repo:
+Sin instalar, desde el repo:
 ```bash
-pip install click rich questionary
+pip install click rich questionary psutil
 ./toolkit --help
 ```
 
 ## Uso rápido
 
 ```bash
-# Ver qué ocupa espacio
+# Menú interactivo (sin argumentos)
+toolkit
+
+# Disk cleanup
 toolkit analyze
-
-# Ver dominios disponibles y su nivel de riesgo
-toolkit status
-
-# Simular limpieza (nunca borra sin --execute)
-toolkit clean
-
-# Limpiar de verdad con aprobación interactiva
 toolkit clean --execute --mode checklist
-
-# Solo un dominio
 toolkit analyze --domain dev_caches
-toolkit clean --execute --domain xcode
-
-# Flujo completo: analiza → guarda reporte → limpia
 toolkit full --execute
+
+# Monitors
+toolkit battery
+toolkit system
+toolkit processes
+toolkit network
 ```
 
-## Dominios (v2)
+## Monitors
+
+| Comando | Qué muestra |
+|---------|-------------|
+| `toolkit battery` | Salud, ciclos, temperatura, voltaje, tiempo restante |
+| `toolkit system` | Modelo, CPU%, memoria, swap, estado térmico |
+| `toolkit processes` | Top 10 por CPU y top 10 por memoria |
+| `toolkit network` | WiFi, estadísticas de red, conexiones activas, conectividad |
+
+## Disk Cleanup — Dominios
 
 | Dominio | Qué limpia | Riesgo |
 |---------|-----------|--------|
@@ -56,18 +66,7 @@ toolkit full --execute
 | `trash` | Papelera (`~/.Trash`) | 🟡 warn |
 | `disk` | Uso total del volumen APFS | — |
 
-## Monitors
-
-| Comando | Descripción |
-|---------|-------------|
-| `toolkit battery` | Salud, ciclos, temperatura y estado de carga |
-| `toolkit system` | CPU, memoria, swap y estado térmico |
-| `toolkit processes` | Top procesos por CPU y memoria |
-| `toolkit network` | WiFi, estadísticas de red y conectividad |
-
-Ejecutar `toolkit` sin argumentos abre el **menú interactivo**.
-
-## Comandos
+## Comandos de cleanup
 
 | Comando | Descripción |
 |---------|-------------|
@@ -99,17 +98,19 @@ Ejecutar `toolkit` sin argumentos abre el **menú interactivo**.
 ## Desarrollo
 
 ```bash
-# Tests
+# Tests (59 tests)
 pytest tests/
 
 # Test de un módulo
-pytest tests/test_cli_domain.py -v
+pytest tests/test_monitor_battery.py -v
 
 # Estructura del paquete
 mac_toolkit_pro/
-  cli.py           # Entry point Click
+  cli.py           # Entry point Click + menú sin args
+  menu.py          # Menú interactivo (questionary)
   core/            # config, models, runner, approval
-  analyzers/       # un archivo por dominio
+  analyzers/       # un archivo por dominio (11 dominios)
+  monitors/        # battery, system, processes, network
   cleaners/        # GenericCleaner con blacklist
   reporters/       # terminal, markdown, json, audit
 ```
@@ -118,4 +119,4 @@ Ver [TOOLKIT_GUIDE.md](TOOLKIT_GUIDE.md) para referencia completa de flags y flu
 
 ---
 
-*Mac DevOps Toolkit Pro v2.0 — [Portfolio-jaime](https://github.com/Portfolio-jaime)*
+*Mac DevOps Toolkit Pro v3.0 — [Portfolio-jaime](https://github.com/Portfolio-jaime)*

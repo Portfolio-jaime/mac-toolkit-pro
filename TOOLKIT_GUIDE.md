@@ -1,7 +1,8 @@
 # 🖥 Mac DevOps Toolkit Pro — Guía de Comandos
 
 **Repo:** [Portfolio-jaime/mac-toolkit-pro](https://github.com/Portfolio-jaime/mac-toolkit-pro)  
-**Entry point:** `toolkit` (tras `pip install -e .`) o `./toolkit` (desde el repo)
+**Entry point:** `toolkit` (tras `pip install -e .`) o `./toolkit` (desde el repo)  
+**Versión:** 3.0
 
 ---
 
@@ -12,18 +13,84 @@
 git clone git@github-portfolio:Portfolio-jaime/mac-toolkit-pro.git
 cd mac-toolkit-pro
 pip install -e .
-toolkit --help    # disponible globalmente
+toolkit    # abre el menú interactivo
 ```
 
 ### Opción B — desde el repo sin instalar
 ```bash
-pip install click rich questionary
+pip install click rich questionary psutil
 ./toolkit --help
 ```
 
 ---
 
-## Comandos
+## Menú interactivo
+
+Ejecutar `toolkit` sin argumentos abre un menú con todas las opciones:
+
+```bash
+toolkit
+```
+
+```
+Mac DevOps Toolkit Pro — choose an action
+
+❯ 🔍 Analyze disk (all domains)
+  🧹 Clean disk (interactive)
+  📊 Full flow (analyze + clean)
+  📋 Domain status
+  🔋 Battery health
+  💻 System (CPU / memory)
+  ⚙️  Processes (top CPU / mem)
+  🌐 Network
+  ❌ Quit
+```
+
+---
+
+## Monitors
+
+### `battery` — Salud de la batería
+
+```bash
+toolkit battery
+```
+
+Muestra: salud (%), ciclos, carga actual, si está cargando, tiempo restante, temperatura, voltaje, capacidad máxima vs diseño.
+
+---
+
+### `system` — CPU y memoria
+
+```bash
+toolkit system
+```
+
+Muestra: modelo del chip, núcleos, RAM total, CPU%, memoria usada/total, swap, estado térmico (pmset).
+
+---
+
+### `processes` — Top procesos
+
+```bash
+toolkit processes
+```
+
+Muestra: presión de memoria, top 10 por CPU% y top 10 por memoria%, con PID, nombre, usuario y color por severidad.
+
+---
+
+### `network` — Red y conectividad
+
+```bash
+toolkit network
+```
+
+Muestra: estado de conectividad (online/offline), SSID WiFi, RSSI, canal, total enviado/recibido, paquetes, conexiones activas.
+
+---
+
+## Disk Cleanup
 
 ### `analyze` — Solo análisis, nunca borra
 
@@ -111,7 +178,7 @@ ls reports/
 
 ---
 
-## Dominios (11 en v2)
+## Dominios de disco (11)
 
 | Dominio | Qué escanea | Riesgo |
 |---------|-------------|--------|
@@ -122,7 +189,7 @@ ls reports/
 | `logs` | `~/Library/Logs`, `/var/log` (>7 días) | 🟢 safe |
 | `downloads` | `~/Downloads`, `~/Desktop` — ZIPs, duplicados | 🟡 warn |
 | `appsupport` | `~/Library/Application Support` | 🟡 warn |
-| `repos` | `~/arqueanja`, `~/arheanja` — node_modules, .venv | 🟢 safe |
+| `repos` | repos locales — node_modules, .venv, __pycache__ | 🟢 safe |
 | `dev_caches` | npm, pip, brew, Gradle, Maven, Cargo, Go | 🟢 safe |
 | `xcode` | DerivedData, Simulators (safe) · Archives (warn) | 🟢/🟡 |
 | `trash` | `~/.Trash` | 🟡 warn |
@@ -157,10 +224,10 @@ ls reports/
 
 ```
 reports/
-  analysis_20260619_143022/
+  analysis_20260620_143022/
     report.md      # Reporte en Markdown
     report.json    # Datos para automatización
-  cleanup_20260619_150000/
+  cleanup_20260620_150000/
     audit.json     # Log de lo borrado (path, bytes, resultado)
 ```
 
@@ -168,9 +235,16 @@ reports/
 
 ## Flujos recomendados
 
-### Diagnóstico rápido
+### Primera vez — ver todo de un vistazo
 ```bash
-toolkit analyze
+toolkit           # menú interactivo
+```
+
+### Diagnóstico completo antes de limpiar
+```bash
+toolkit system    # cuánta RAM queda
+toolkit battery   # salud de la batería
+toolkit analyze   # qué ocupa espacio
 ```
 
 ### Liberar espacio de dev caches en un paso
@@ -180,7 +254,7 @@ toolkit clean --execute --domain dev_caches
 
 ### Limpieza segura completa
 ```bash
-toolkit full --mode deal          # simula primero
+toolkit full --mode deal            # simula primero
 toolkit full --execute --mode deal  # ejecuta si el resultado te gusta
 ```
 
@@ -190,9 +264,11 @@ toolkit analyze --domain xcode --verbose
 toolkit clean --execute --domain xcode --mode item
 ```
 
-### Ver archivos grandes en Downloads
+### Monitorear rendimiento antes de una demo
 ```bash
-toolkit analyze --domain downloads --verbose --min-size 500
+toolkit processes   # ver qué procesos consumen más
+toolkit system      # CPU y memoria actuales
+toolkit network     # conectividad y estadísticas
 ```
 
 ---
@@ -207,4 +283,33 @@ toolkit analyze --domain downloads --verbose --min-size 500
 
 ---
 
-*Mac DevOps Toolkit Pro v2.0 — Jaime Henao*
+## Estructura del paquete
+
+```
+mac_toolkit_pro/
+  cli.py              # Click CLI + invoca menú si no hay subcomando
+  menu.py             # Menú interactivo con questionary
+  core/
+    config.py         # Paths, thresholds, blacklist
+    models.py         # CleanableItem, AnalysisResult
+    runner.py         # run_analyzers() — paralelo con ThreadPoolExecutor
+    approval.py       # ApprovalEngine — modos deal/category/item/checklist
+  analyzers/          # Un archivo por dominio de disco (11 total)
+  monitors/
+    base.py           # BaseMonitor ABC
+    battery.py        # ioreg + pmset
+    system.py         # psutil + system_profiler
+    processes.py      # psutil process_iter
+    network.py        # psutil + urllib (sin requests)
+  cleaners/
+    generic.py        # GenericCleaner con blacklist
+  reporters/
+    terminal.py       # Rich console + print_preview_table()
+    markdown.py       # Guarda report.md
+    json_reporter.py  # Guarda report.json
+    audit.py          # Escribe audit.json post-cleanup
+```
+
+---
+
+*Mac DevOps Toolkit Pro v3.0 — Jaime Henao*
