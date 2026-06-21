@@ -43,7 +43,10 @@ class NetworkMonitor(BaseMonitor):
 
     def snapshot(self) -> dict:
         counters = psutil.net_io_counters()
-        conns = psutil.net_connections()
+        try:
+            conns = psutil.net_connections()
+        except psutil.AccessDenied:
+            conns = []
         wifi = self._wifi_info()
         online = self._test_connectivity()
 

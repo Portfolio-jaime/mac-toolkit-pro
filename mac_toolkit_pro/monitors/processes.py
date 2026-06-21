@@ -26,7 +26,7 @@ class ProcessMonitor(BaseMonitor):
                 procs.append(info)
             except (psutil.NoSuchProcess, psutil.AccessDenied):
                 continue
-        return sorted(procs, key=lambda x: x.get("cpu_percent", 0), reverse=True)[:limit]
+        return sorted(procs, key=lambda x: x.get("cpu_percent") or 0, reverse=True)[:limit]
 
     def top_by_memory(self, limit: int = 10) -> list[dict]:
         procs = []
@@ -37,7 +37,7 @@ class ProcessMonitor(BaseMonitor):
                 procs.append(info)
             except (psutil.NoSuchProcess, psutil.AccessDenied):
                 continue
-        return sorted(procs, key=lambda x: x.get("memory_percent", 0), reverse=True)[:limit]
+        return sorted(procs, key=lambda x: x.get("memory_percent") or 0, reverse=True)[:limit]
 
     def snapshot(self) -> dict:
         mem = psutil.virtual_memory()
