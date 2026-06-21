@@ -48,10 +48,13 @@ def _filter_analyzers(domain):
     return [fn for fn in ALL_ANALYZERS if fn.__self__.domain == domain]
 
 
-@click.group()
-def cli():
+@click.group(invoke_without_command=True)
+@click.pass_context
+def cli(ctx):
     """🖥  Mac DevOps Toolkit Pro — Disk analysis and safe cleanup."""
-    pass
+    if ctx.invoked_subcommand is None:
+        from mac_toolkit_pro.menu import show_menu
+        show_menu()
 
 
 @cli.command()

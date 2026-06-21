@@ -56,6 +56,17 @@ toolkit full --execute
 | `trash` | Papelera (`~/.Trash`) | 🟡 warn |
 | `disk` | Uso total del volumen APFS | — |
 
+## Monitors
+
+| Comando | Descripción |
+|---------|-------------|
+| `toolkit battery` | Salud, ciclos, temperatura y estado de carga |
+| `toolkit system` | CPU, memoria, swap y estado térmico |
+| `toolkit processes` | Top procesos por CPU y memoria |
+| `toolkit network` | WiFi, estadísticas de red y conectividad |
+
+Ejecutar `toolkit` sin argumentos abre el **menú interactivo**.
+
 ## Comandos
 
 | Comando | Descripción |
